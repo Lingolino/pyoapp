@@ -1,11 +1,9 @@
 from flask import Flask, render_template,request,jsonify
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from urllib.parse import urlencode
 import requests
-import logic
-from logic import Controller, apiGateway
-from oop import api
+
+
 
 player_names=["DoubIe Ling", "Volbeat1","Pfaffy","Faho541","pYo Titanic","Jermain96","Osko1","Oriannna Grande","Widefight","Kha Chicks"]
 players_puuid=["S6FwiDgvHnvmjwwMkd0QwyJFL0j5A3MDYkyQdkj4RYKz8BRaaGucrT_CBq50b2Uo-xJEGdr2-TMjgw",
@@ -82,11 +80,10 @@ def start_page():
 
     # Daten für Rekorde vorbereiten
 
-    log = Controller(players_puuid[0],0,0)
-    Record_Kills = log.get_records("kills")
-    Record_Deaths = log.get_records("deaths")
-    Record_Assists = log.get_records("assists")
-    Record_Minions = log.get_records("minions")
+    Record_Kills = [[2074, 4495, 3860, 4021, 4495], ['Pfaffy', 'pYo Titanic', 'Oriannna Grande', 'Kha Chicks', 'pYo Titanic'], ['Tristana', 'Yone', 'Smolder', 'Hwei', 'Darius'], [25, 23, 21, 21, 20], [8, 5, 11, 5, 12], [11, 8, 8, 12, 24], [240, 207, 374, 251, 241], ['EUW1_6860292961', 'EUW1_6801831973', 'EUW1_6817280994', 'EUW1_6842061599', 'EUW1_6843316938']]
+    Record_Deaths = [[28, 4495, 3860, 28, 28], ['VolBeat1', 'pYo Titanic', 'Oriannna Grande', 'VolBeat1', 'VolBeat1'], ['Karthus', 'Yone', 'Smolder', 'Thresh', 'Shyvana'], [8, 3, 3, 2, 9], [16, 15, 15, 14, 14], [14, 5, 7, 16, 7], [118, 201, 274, 27, 25], ['EUW1_6797799998', 'EUW1_6842522049', 'EUW1_6815688418', 'EUW1_6816395710', 'EUW1_6774022465']]
+    Record_Assists = [[3855, 3855, 3855, 3855, 3855], ['Osko1', 'Osko1', 'Osko1', 'Osko1', 'Osko1'], ['Maokai', 'Thresh', 'Soraka', 'Thresh', 'Lulu'], [3, 2, 2, 1, 2], [11, 10, 6, 5, 4], [38, 37, 32, 31, 31], [61, 40, 36, 42, 39], ['EUW1_6843805349', 'EUW1_6857716172', 'EUW1_6820629598', 'EUW1_6860655634', 'EUW1_6765331303']]
+    Record_Minions = [[3860, 4068, 3378, 4495, 4904], ['Oriannna Grande', 'Faho541', 'Jermain96', 'pYo Titanic', 'DoubIe Ling'], ['Smolder', 'Trundle', 'Teemo', 'Irelia', 'Smolder'], [21, 10, 4, 7, 7], [11, 6, 1, 13, 3], [8, 6, 5, 2, 3], [374, 323, 319, 314, 308], ['EUW1_6817280994', 'EUW1_6771949520', 'EUW1_6765330019', 'EUW1_6770237425', 'EUW1_6806278906']]
 
 
 
