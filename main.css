@@ -1,0 +1,506 @@
+body {
+    font-family: 'Protest Strike', sans-serif;
+    background-color: rgb(20, 9, 90);
+
+}
+
+.container {
+    margin: auto;
+    /* Zentrieren des Inhalts vertikal */
+}
+
+
+h1 {
+    justify-content: center;
+    color: white;
+}
+
+.progress-bar {
+    flex: 1;
+    /* Die Fortschrittsleiste nimmt den verfügbaren Platz ein */
+    height: 20px;
+    /* Höhe der Fortschrittsleiste */
+    background-color: #f0f0f0;
+    /* Hintergrundfarbe der Fortschrittsleiste */
+    border-radius: 10px;
+    /* Abrundung der Ecken */
+}
+
+/* Beispiel-Stile für den Fortschrittsbalken */
+.progress-bar-fill {
+    height: 100%;
+    background-color: #007bff;
+    /* Farbe des gefüllten Fortschrittsbalkens */
+    border-radius: 10px;
+    /* Abrundung der Ecken */
+    font-size: 15px
+}
+
+.item {
+    margin-right: 20px;
+    /* Abstand zwischen den Elementen */
+}
+
+.grid-fortschritt {
+    display: grid;
+    grid-template-columns: 300px auto;
+    color: bisque;
+    width: 800px;
+    margin: auto;
+    align-items: center;
+
+}
+
+
+.grid-fortschritt-item1 {
+    padding: 10px;
+    font-size: 30px;
+    text-align: right;
+}
+
+h2 {
+    margin: auto;
+    text-align: center;
+    color: bisque;
+}
+
+.grid-fortschritt-item {
+    padding: 0px;
+    font-size: 20px;
+}
+
+.grid-games {
+    display: grid;
+    grid-template-columns: 600px 600px 600px;
+    color: bisque;
+    width: 800px;
+    margin: auto;
+    align-items: center;
+}
+
+.grid-games-item1 {
+    padding: 10px;
+    font-size: 30px;
+    text-align: right;
+}
+
+
+
+.progress {
+    height: 10px;
+}
+
+
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Blöcke unten ausrichten */
+    margin-top: 150px;
+    position: relative;
+    /* Container für die absolute Positionierung der Bilder */
+}
+
+.color-step {
+    width: 100px;
+    margin: 0 5px;
+    /* Abstand zwischen den Blöcken */
+    background: linear-gradient(to top, rgb(20, 9, 90), #827e92);
+    /* Farbverlauf von Rot zu Blau */
+    border: 1px solid black;
+    /* Rand für Sichtbarkeit */
+    text-align: center;
+    color: white;
+    bottom: 30px;
+    padding: 10px;
+    position: relative;
+    /* Positionierung für die Bilder innerhalb der Blöcke */
+    z-index: 1;
+    /* Stelle sicher, dass Blöcke über Bildern liegen */
+    /* opacity: 0.7; 70% Transparenz */
+}
+
+.color-step img {
+    position: absolute;
+    top: -60px;
+    /* Positionierung über dem Block */
+    width: 100%;
+    height: auto;
+
+    left: 50%;
+    /* Horizontale Zentrierung des Bildes */
+    transform: translate(-50%, -50%);
+
+    display: block;
+    margin-bottom: 5px;
+    opacity: 1;
+}
+
+.color-step img.additional {
+    top: auto;
+    /* Zurücksetzen der Position auf die Standardeinstellung */
+    bottom: 30px;
+    /* Positionierung unter dem Block */
+    width: 60%;
+}
+
+
+
+/* 
+  /* Styles für die Slides */
+/*.slide-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 300px; /* Höhe der Slides */
+/* }
+
+/*
+.slide {
+    flex: 0 0 100%; /* Jeder Slide nimmt den gesamten verfügbaren Platz ein */
+/* transition: transform 0.5s ease-in-out; /* Animationseffekt */
+/*}
+ */
+
+
+
+
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+
+.radio_container {
+    position: absolute;
+
+}
+
+.tabs {
+    display: flex;
+    position: relative;
+    background-color:  rgb(20, 9, 90);
+    box-shadow: rgb(0, 0, 0, 0.2)0px 60px 40px -7px;
+    padding: 0.75rem;
+    border-radius: 99px;
+
+
+}
+
+.tabs * {
+    z-index: 2;
+}
+
+input[type="radio"] {
+    display: None;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 200px;
+    font-size: 1.25rem;
+    font-weight: 400;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: color 0.15s ease-in
+}
+
+
+input[type="radio"]:checked+label {
+    color: white;
+}
+
+input[id^="radio-"]:checked~.slide-container .slide {
+    opacity: 0;
+}
+
+input[id="radio-1"]:checked~.slide-container .slide:nth-child(1),
+input[id="radio-2"]:checked~.slide-container .slide:nth-child(2),
+input[id="radio-3"]:checked~.slide-container .slide:nth-child(3),
+input[id="radio-4"]:checked~.slide-container .slide:nth-child(4) {
+    opacity: 1;
+}
+
+
+
+input[id="radio-1"]:checked~.glider {
+    transform: translateX(0);
+}
+
+input[id="radio-2"]:checked~.glider {
+    transform: translateX(100%);
+}
+
+input[id="radio-3"]:checked~.glider {
+    transform: translateX(200%);
+}
+
+input[id="radio-4"]:checked~.glider {
+    transform: translateX(300%);
+}
+
+input[id="radio-5"]:checked~.glider {
+    transform: translateX(400%);
+}
+
+input[id="radio-6"]:checked~.glider {
+    transform: translateX(500%);
+}
+
+input[id="radio-7"]:checked~.glider {
+    transform: translateX(600%);
+}
+input[id="radio-8"]:checked~.glider {
+    transform: translateX(700%);
+}
+
+input[id="radio-9"]:checked~.glider {
+    transform: translateX(800%);
+}
+
+
+.glider {
+    position: absolute;
+    display: flex;
+    height: 20px;
+    width: 200px;
+    border-radius: 99px;
+    background-color: rgb(68, 70, 209);
+    background-image: linear-gradient(315deg, rgb(61, 10, 3) 0%, #0d324d 74%);
+    color: rgb(94, 31, 31);
+    z-index: 1;
+    transition: 0.50s ease-out;
+}
+
+
+.slide-container {
+    display: flex;
+    overflow: hidden;
+    width: 400%;
+    height: 300px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 25%;
+    box-sizing: border-box;
+    opacity: 0;
+}
+
+.slide:nth-child(1) {
+    background-color: red;
+}
+
+.slide:nth-child(2) {
+    background-color: rgb(152, 152, 165);
+}
+
+.slide:nth-child(3) {
+    background-color: green;
+}
+
+.slide:nth-child(4) {
+    background-color: yellow;
+}
+
+
+
+@media (max-width: 700px) {
+    .tabs {
+        transform: scale(0.6);
+    }
+}
+
+
+
+* {
+    box-sizing: border-box
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: center;
+    margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+    position: center;
+    margin: auto;
+}
+
+/* Next & previous buttons
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+} */
+
+/* Position the "next button" to the right
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through 
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+} */
+
+/* Caption text
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Number text (1/3 etc) 
+.numbertext {
+    color: #f2f2f2;
+    font-size: 8px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* The dots/bullets/indicators 
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+} */
+/* 
+.active,
+.dot:hover {
+    background-color: #717171;
+}
+
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+ */
+
+
+.stat-container {
+    margin: auto;
+    position: center;
+    display: grid;
+    grid-template-columns: 330px 500px 500px;
+    gap: 10px;
+    height: 600px;
+    width: 100%;
+    opacity: 1;
+    
+    
+}
+
+
+.first-column {
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+    opacity: 1;
+}
+
+.second-column {
+    display: grid;
+    grid-template-rows: 200px 90px 300px;
+    gap: 5px;
+}
+
+.second-column .cell:nth-child(1) {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    gap: 5px;
+    color: white;
+}
+.first-cell-column {
+    margin: auto;
+    /* border: 1px solid white; */
+}
+
+.second-cell-column {
+    margin: auto;
+    text-align: center; 
+    
+    /* border: 1px solid white; */
+    font-size: 30px;
+}
+.third-cell-colum {
+    margin: auto;
+    text-align: center; 
+    
+    /* border: 1px solid white; */
+    font-size: 30px;
+}
+
+.second-column .cell:nth-child(2) {
+    display: grid;
+    grid-template-columns: 100px 120px auto;
+    gap: 5px;
+    color: white;
+}
+
+.second-column .cell:nth-child(3) {
+    /* border: 1px solid white; */
+    padding: 1px;
+    
+}
+
+.thrid-column {
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+}
+
+
+.canvas-cyrcle {
+    display: block;
+    margin: 20px auto; /* Zentrieren des Canvas */
+    background-color: #f0f0f0;
+    border-radius: 50%;
+}
+
+
+table, th, td {
+    width: 300px;
+    border:1px solid rgb(31, 29, 29);
+    color: white;
+  }
+
+
+
+
