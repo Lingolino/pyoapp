@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pYo league of Legends</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+
+
+    <h1>Die große pYo Winrate Challenge</h1>
+
+    <div class="container">
+        <h2>Anzahl der gespielten Games</h2>
+
+        <div class="grid-fortschritt">
+            {%for i in SpielerAnzahl%}
+            <div class="grid-fortschritt-item1">{{SpielerSortiertGames[i]}}</div>
+            <div class="grid-fortschritt-item">
+                <div class="progress-bar" role="progressbar" aria-label="Basic example"
+                    aria-valuenow="{{GamesSortiert[i]}}" aria-valuemin="{{GamesSortiert[i]}}" aria-valuemax="100">
+                    <div class="progress-bar-fill" style="width:{{SpielerProzent[i]}}%">{{GamesSortiert[i]}}/70</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
+    
+    <div class="grid-container">
+        
+
+        <div class="color-step" style="height: 270px; background-color: #FF0000;">
+            <img src="static/ranks/Challenger.webp" alt="Bild 2">
+            {{WinrateDict[1][0]}} <br>
+            {{WinrateDict[0][0]}}%<br>
+            {%if WinrateDict[2][0] < 70 %} <a href="#" data-toggle="popover" title="nicht alle spiele gespielt"
+                data-content="nicht alle Spiele gespieltme">
+                <img src="static/ausrufezeichen.png" alt="Bild" width="20" height="20">
+                </a>
+                {%endif%}
+        </div>
+        <div class="color-step" style="height: 250px; background-color: #FFA500;">
+            <img src="static/ranks/Grandmaster.webp" alt="Bild 2">
+            {{WinrateDict[1][1]}} <br>
+            {{WinrateDict[0][1]}}%<br>
+            {%if WinrateDict[2][1] < 70 %} <a href="#" data-toggle="popover" title="nicht alle spiele gespielt"
+                data-content="nicht alle Spiele gespieltme">
+                <img src="static/ausrufezeichen.png" alt="Bild" width="20" height="20">
+                </a>
+                {%endif%}
+        </div>
+        <div class="color-step" style="height: 230px; background-color: #FFFF00;">
+            <img src="static/ranks/Master.webp" alt="Bild 2">
+            {{WinrateDict[1][2]}} <br>
+            {{WinrateDict[0][2]}}%<br>
+            {%if WinrateDict[2][2] < 70 %} <a href="#" data-toggle="popover" title="nicht alle spiele gespielt"
+                data-content="nicht alle Spiele gespieltme">
+                <img src="static/ausrufezeichen.png" alt="Bild" width="20" height="20">
+                </a>
+                {%endif%}
+        </div>
+        <div class="color-step" style="height: 210px; background-color: #00FF00;">
+            <img src="static/ranks/Diamond.webp" alt="Bild 2">
+            {{WinrateDict[1][3]}} <br>
+            {{WinrateDict[0][3]}}%<br>
+            {%if WinrateDict[2][3] < 70 %} <a href="#" data-toggle="popover" title="nicht alle spiele gespielt"
+                data-content="nicht alle Spiele gespieltme">
+                <img src="static/ausrufezeichen.png" alt="Bild" width="20" height="20">
+                </a>
+                {%endif%}
+        </div>
+        <div class="color-step" style="height: 190px; background-color: #0000FF;">
+            <img src="static/ranks/Emerald.webp" alt="Bild 2">
+            {{WinrateDict[1][4]}} <br>
+            {{WinrateDict[0][4]}}%<br>
+            {%if WinrateDict[2][4] < 70 %} <a href="#" data-toggle="popover" title="nicht alle spiele gespielt"
+                data-content="nicht alle Spiele gespieltme">
+                <img src="static/ausrufezeichen.png" alt="Bild" width="20" height="20">
+                </a>
+                {%endif%}
+        </div>
+        <div class="color-step" style="height: 170px; background-color: #800080;">
+            <img src="static/ranks/Platinum.webp" alt="Bild 2">
+            {{WinrateDict[1][5]}} <br>
+            {{WinrateDict[0][5]}}%<br>
+            {%if WinrateDict[2][5] < 70 %} <a href="#" data-toggle="popover" title="nicht alle spiele gespielt"
+                data-content="nicht alle Spiele gespieltme">
+                <img src="static/ausrufezeichen.png" alt="Bild" width="20" height="20">
+                </a>
+                {%endif%}
+        </div>
+        <div class="color-step" style="height: 150px; background-color: #FFC0CB;">
+            <img src="static/ranks/Gold.webp" alt="Bild 2">
+            {{WinrateDict[1][6]}} <br>
+            {{WinrateDict[0][6]}}%<br>
+            {%if WinrateDict[2][6] < 70 %} <a href="#" data-toggle="popover" title="nicht alle spiele gespielt"
+                data-content="nicht alle Spiele gespieltme">
+                <img src="static/ausrufezeichen.png" alt="Bild" width="20" height="20">
+                </a>
+                {%endif%}
+        </div>
+        <div class="color-step" style="height: 130px; background-color: #FF4500;">
+            <img src="static/ranks/Silver.webp" alt="Bild 2">
+            {{WinrateDict[1][7]}} <br>
+            {{WinrateDict[0][7]}}%<br>
+            {%if WinrateDict[2][7] < 70 %} <a href="#" data-toggle="popover" title="nicht alle spiele gespielt"
+                data-content="nicht alle Spiele gespieltme">
+                <img src="static/ausrufezeichen.png" alt="Bild" width="20" height="20">
+                </a>
+                {%endif%}
+        </div>
+        <div class="color-step" style="height: 110px; background-color: #00CED1;">
+            <img src="static/ranks/Bronze.webp" alt="Bild 2">
+            {{WinrateDict[1][8]}} <br>
+            {{WinrateDict[0][8]}}%<br>
+            {%if WinrateDict[2][8] < 70 %} <a href="#" data-toggle="popover" title="nicht alle spiele gespielt"
+                data-content="nicht alle Spiele gespieltme">
+                <img src="static/ausrufezeichen.png" alt="Bild" width="20" height="20">
+                </a>
+                {%endif%}
+        </div>
+        <div class="color-step" style="height: 90px; background-color: #00CED1;">
+            <img src="static/ranks/Unranked.webp" alt="Bild 2">
+            {{WinrateDict[1][9]}} <br>
+            {{WinrateDict[0][9]}}%<br>
+            {%if WinrateDict[2][9] < 70 %} <a href="#" data-toggle="popover" title="nicht alle spiele gespielt"
+                data-content="nicht alle Spiele gespieltme">
+                <img src="static/ausrufezeichen.png" alt="Bild" width="20" height="20">
+                </a>
+                {%endif%}
+        </div>
+    </div> 
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+
+
+
+    <div class="container">
+        <h2>Winrates der einzelnen Spieler</h2>
+    <div style="width:100%;">
+        <canvas id="line-chart"></canvas>
+    </div>
+    <script>
+        var ctx = document.getElementById('line-chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ Games }},
+                datasets: [
+                    {% for i in SpielerAnzahl %}
+                    {
+                        label: '{{SpielerUnsortiert[i]}}',
+                        data: {{ SpielerWinrate[i]}},
+                        borderColor: getColor({{ loop.index }}),
+                        backgroundColor: getBackgroundColor({{ loop.index }}),
+                        borderWidth: 2
+                    }
+                    {% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: 'rgba(255, 155, 255, 0.2)', // Farbe der vertikalen Gitternetzlinien
+                            lineWidth: 4 // Linienstärke der vertikalen Gitternetzlinien
+                        }
+                    }]
+                }
+            }
+        });
+
+        function getColor(index) {
+            var colors = [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(229, 112, 202, 1)',
+                'rgba(142, 94, 162, 1)',
+                'rgba(61, 144, 74, 1)',
+                'rgba(56, 108, 157, 1)'
+            ];
+            return colors[index % colors.length];
+        }
+
+        function getBackgroundColor(index) {
+            var colors = [
+                'rgba(255, 99, 132, 0,2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(229, 112, 202, 0.2)',
+                'rgba(142, 94, 162, 0.2)',
+                'rgba(61, 144, 74, 0.2)',
+                'rgba(56, 108, 157, 0.2)'
+            ];
+            return colors[index % colors.length];
+        }
+    </script>
+    </div>
+
+    <br>
+    <h2>Records</h2>
+    <div class="record-container">
+
+        <div class="first-record-column">
+            <h3>most kills in one game</h3>
+            <table class="record-table" style="width:100%;">
+                <tr>
+                    <th class="radord-table-th" style="width: 10px;">Nr</th>
+                    <th class="radord-table-th" style="width: 50px; text-align: center;" colspan="2">Spieler</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;" colspan="2">Champion</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;">kills</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;">Info</th>
+                </tr>
+                {%for i in range(0, 5)%}
+                <tr>
+                    <td class="record-table-td">{{i+1}}</td>
+                    <td class="record-table-td" style="width: 20px;"><img
+                            src="static/profileicons/{{RecordKills[0][i]}}.png" alt="X" style=" width: 40px"></td>
+                    <td class="record-table-td" style="width: 50px;">{{RecordKills[1][i]}}</td>
+                    <td class="record-table-td" style="width: 20px;"><img
+                            src="static/champions/{{RecordKills[2][i]}}.png" alt="Bild 2" style=" width: 40px"></td>
+                    <td class="record-table-td" style="width: 50px;"> {{RecordKills[2][i]}}</td>
+                    <td class="record-table-td" style="width: 15px;"> {{RecordKills[3][i]}}</td>
+                    <td class="record-table-td" style="width: 10px;"><button class="data-btn"
+                            value="{{RecordKills[7][i]}}">
+                            <img src="static/info.png" alt="" style="width: 20px;">
+                        </button></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="second-record-column" style="opacity: 1;">
+            <h3>most deaths in one game</h3>
+            <table class="record-table" style="width:100%;">
+                <tr>
+                    <th class="radord-table-th" style="width: 10px;">Nr</th>
+
+                    <th class="radord-table-th" style="width: 40px; text-align: center;" colspan="2">Spieler</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;" colspan="2">Champion</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;">Deaths</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;">Info</th>
+                </tr>
+                {%for i in range(0, 5)%}
+                <tr>
+                    <td class="record-table-td">{{i+1}}</td>
+                    <td class="record-table-td" style="width: 20px;"><img
+                            src="static/profileicons/{{RecordDeaths[0][i]}}.png" alt="X" style=" width: 40px"></td>
+                    <td class="record-table-td" style="width: 50px;">{{RecordDeaths[1][i]}}</td>
+                    <td class="record-table-td" style="width: 20px;"><img
+                            src="static/champions/{{RecordDeaths[2][i]}}.png" alt="Bild 2" style=" width: 40px"></td>
+                    <td class="record-table-td" style="width: 50px;"> {{RecordDeaths[2][i]}}</td>
+                    <td class="record-table-td" style="width: 15px;"> {{RecordDeaths[4][i]}}</td>
+                    <td class="record-table-td" style="width: 10px;"><button class="data-btn"
+                            value="{{RecordDeaths[7][i]}}">
+                            <img src="static/info.png" alt="" style="width: 20px;"></button></td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+        <div class="thrid-record-column" style="opacity: 1;">
+            <h3>most minionkills in one game</h3>
+            <table class="record-table" style="width:100%;">
+                <tr>
+                    <th class="radord-table-th" style="width: 10px;">Nr</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;" colspan="2">Spieler</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;" colspan="2">Champion</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;">Minions</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;">Info</th>
+                </tr>
+                {%for i in range(0, 5)%}
+                <tr>
+                    <td class="record-table-td">{{i+1}}</td>
+                    <td class="record-table-td" style="width: 20px;"><img
+                            src="static/profileicons/{{RecordMinions[0][i]}}.png" alt="X" style=" width: 40px"></td>
+                    <td class="record-table-td" style="width: 50px;">{{RecordMinions[1][i]}}</td>
+                    <td class="record-table-td" style="width: 20px;"><img
+                            src="static/champions/{{RecordMinions[2][i]}}.png" alt="Bild 2" style=" width: 40px"></td>
+                    <td class="record-table-td" style="width: 50px;"> {{RecordMinions[2][i]}}</td>
+                    <td class="record-table-td" style="width: 15px;"> {{RecordMinions[6][i]}}</td>
+                    <td class="record-table-td" style="width: 10px;"><button class="data-btn"
+                            value="{{RecordMinions[7][i]}}">
+                            <img src="static/info.png" alt="" style="width: 20px;"></button></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="forth-record-column" style="opacity: 1;">
+            <h3>most Assists in one game</h3>
+            <table class="record-table" style="width:100%;">
+                <tr>
+                    <th class="radord-table-th" style="width: 10px;">Nr</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;" colspan="2">Spieler</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;" colspan="2">Champion</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;">Assists</th>
+                    <th class="radord-table-th" style="width: 40px; text-align: center;">Info</th>
+                </tr>
+
+                {%for i in range(0, 5)%}
+                <tr>
+                    <td class="record-table-td">{{i+1}}</td>
+                    <td class="record-table-td" style="width: 20px;"><img
+                            src="static/profileicons/{{RecordAssists[0][i]}}.png" alt="X" style=" width: 40px"></td>
+                    <td class="record-table-td" style="width: 50px;">{{RecordAssists[1][i]}}</td>
+                    <td class="record-table-td" style="width: 20px;"><img
+                            src="static/champions/{{RecordAssists[2][i]}}.png" alt="Bild 2" style=" width: 40px"></td>
+                    <td class="record-table-td" style="width: 50px;"> {{RecordAssists[2][i]}}</td>
+                    <td class="record-table-td" style="width: 15px;"> {{RecordAssists[5][i]}}</td>
+                    <td class="record-table-td" style="width: 10px;"><button class="data-btn"
+                            value="{{RecordAssists[7][i]}}">
+                            <img src="static/info.png" alt="" style="width: 20px;"></button></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="recimg">
+            <img src="static/bg1.png" alt="Hintergrundbild">
+        </div>
+    </div>
+
+
+
+
+    <br>
+    <br>
+    
+    <div class="radio-container">
+        <div class="tabs">
+            <input type="radio" id="radio-1" name="tabs" checked onclick="currentSlide(1)">
+            <label class="tab" for="radio-1">Double Ling</label>
+
+            <input type="radio" id="radio-2" name="tabs" onclick="currentSlide(2)">
+            <label class="tab" for="radio-2">VolBeat1</label>
+
+            <input type="radio" id="radio-3" name="tabs" onclick="currentSlide(3)">
+            <label class="tab" for="radio-3">Pfaffy</label>
+
+            <input type="radio" id="radio-4" name="tabs" onclick="currentSlide(4)">
+            <label class="tab" for="radio-4">Faho541</label>
+
+            <input type="radio" id="radio-5" name="tabs" onclick="currentSlide(5)">
+            <label class="tab" for="radio-5">pYo Titanic</label>
+
+            <input type="radio" id="radio-6" name="tabs" onclick="currentSlide(6)">
+            <label class="tab" for="radio-6">Jermain96</label>
+
+            <input type="radio" id="radio-7" name="tabs" onclick="currentSlide(7)">
+            <label class="tab" for="radio-7">Nosko1</label>
+
+            <input type="radio" id="radio-8" name="tabs" onclick="currentSlide(8)">
+            <label class="tab" for="radio-8">Oriannna Grande</label>
+
+            <input type="radio" id="radio-9" name="tabs" onclick="currentSlide(9)">
+            <label class="tab" for="radio-9">Widefight</label>
+
+            <input type="radio" id="radio-10" name="tabs" onclick="currentSlide(10)">
+            <label class="tab" for="radio-10">Kha Chicks</label>
+
+
+            <span class="glider"></span>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        // Funktion zum Zeichnen des Ringdiagramms
+        function drawDonutChart(canvasId, data, colors, innerRadius) {
+            var canvas = document.getElementById(canvasId);
+            var ctx = canvas.getContext("2d");
+            var total = 0;
+            var startAngle = 0;
+            var centerX = canvas.width / 2;
+            var centerY = canvas.height / 2;
+            var radius = Math.min(canvas.width, canvas.height) / 2;
+            var thickness = radius - innerRadius;
+
+            // Berechnung der Gesamtsumme der Daten
+            for (var i = 0; i < data.length; i++) {
+                total += data[i];
+            }
+
+            // Zeichnen der Segmente
+            for (var i = 0; i < data.length; i++) {
+                var sliceAngle = (Math.PI * 2 * data[i]) / total;
+                ctx.fillStyle = colors[i];
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
+                ctx.arc(centerX, centerY, innerRadius, startAngle + sliceAngle, startAngle, true); // Äußere Kontur
+                ctx.closePath();
+                ctx.fill();
+                startAngle += sliceAngle;
+            }
+        }
+
+    </script>
+    <br>
+    <div class="slideshow-container">
+
+        {%for pIndex in SpielerAnzahl%}
+        <div class="mySlides">
+            <div class="stat-container">
+
+                <div class="first-column">
+                    <img src="static/loading/{{mostPlayedChampion[pIndex][0][0]}}_0.jpg" style="width:100%">
+                </div>
+                <div class="second-column">
+                    <div class="cell">
+                        <div class="first-cell-column">
+                            <img src="static/ranks/{{SpielerRang[pIndex][0]}}.webp" alt="Bild 2" style="width: 100%;">
+                        </div>
+                        <div class="second-cell-column">
+                            <div style="font-size: 15px;">Solo-Rank</div>
+                            {{SpielerRang[pIndex][0]}} {{SpielerRang[pIndex][1]}} <br>
+                            {{SpielerRang[pIndex][2]}} Lp
+                        </div>
+                    </diV>
+                    <div class="cell">
+                        <div class="first-cell-column">
+                            <canvas id="myCanvas{{pIndex}}" width="70" height="70"></canvas>
+                            <script>
+                                var data{{pIndex}} =[{{ SpielerRang[pIndex][5] }}, {{ SpielerRang[pIndex][4] - SpielerRang[pIndex][5] }}]; 
+                                var colors{{pIndex}} =['rgb(8, 122, 27)', 'rgb(158, 9, 9)']; 
+                                var innerRadius{{pIndex}} = 15; 
+                                drawDonutChart('myCanvas{{pIndex}}', data{{pIndex}}, colors{{ pIndex }}, innerRadius{{ pIndex }});
+                            </script>
+                        </div>
+                        <div class="second-cell-column">
+                            {{SpielerRang[pIndex][3]}}%
+                        </div>
+                        <div class="third-cell-column">
+                            {{SpielerRang[pIndex][4]}} Spiele gespielt <br>
+                            <div style="color: rgb(8, 122, 27);">{{SpielerRang[pIndex][5]}} gewonnen</div>
+                            <div style="color: rgb(158, 9, 9);">{{SpielerRang[pIndex][4]-SpielerRang[pIndex][5]}}
+                                verloren</div>
+                        </div>
+                    </div>
+
+                    <div class="cell">
+                        <div style="text-align: center; color: white;"> meist gespielte Champions</div>
+                        <table class="stat-table" style="width:100%">
+                            <tr>
+                                <th class="stat-tabel-th">Champion</th>
+                                <th class="stat-tabel-th">Games</th>
+                                <th class="stat-tabel-th">Winrate</th>
+                                <th class="stat-tabel-th">K/D/A</th>
+                            </tr>
+
+                            {%for i in mostPlayedChampion[pIndex]%}
+
+                            <tr>
+                                <td class="stat-table-td"><img style="width: 30%;" src="static/champions/{{i[0]}}.png"
+                                        alt="Ch"> {{i[0]}}</td>
+                                <td class="stat-table-td">{{i[1]}}</td>
+                                <td class="stat-table-td">{{i[2]}}%</td>
+                                <td class="stat-table-td">{{i[3]}}/{{i[4]}}/{{i[5]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+
+
+                    </div>
+
+                </div>
+                <div class="third-column">alskdj</div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            //   let dots = document.getElementsByClassName("dot");
+            let radio = document.getElementsByName("radio");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < radio.length; i++) {
+                radio[i].className = radio[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            radio[slideIndex - 1].className += " active";
+        }
+    </script>
+
+
+ 
+    <div class="popup" id="popup">
+        <button class="closebutton" id="close-btn">X</button>
+        <h2 style="text-align: center;">Matchdetails</h2>
+        <div class="container-left" id="column1"></div>
+        <div class="container-right" id="column2"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".data-btn").click(function () {
+                var matchID = $(this).val();
+                fetchMatchDetails(matchID);
+            });
+
+            $("#close-btn").click(function () {
+                closePopup();
+            });
+        });
+
+        function fetchMatchDetails(matchID) {
+            $.ajax({
+                type: "GET",
+                url: "/get_match_details",
+                data: { id: matchID },
+                dataType: 'json',
+                success: function (response) {
+                    displayMatchDetails(response);
+                    openPopup();
+                },
+                error: function (xhr, status, error) {
+                    console.error("Fehler beim Abrufen der Daten:", error);
+                }
+            });
+        }
+
+        function displayMatchDetails(match) {
+            var content = "";
+            var column1Content = "<h3>"+match[0][10]+"</h3>";
+            var column2Content = "<h3>"+match[5][10]+"</h3>";
+
+
+            for (var i = 0; i < match.length; i++) {
+                if (i < 5) {
+                    var rowContent = ""
+                        + "<div class='content-left' style='width=100%'>"
+                            + "<div class='content-left-first'>" 
+                                + "<img src='static/champions/" + match[i][2] + ".png' alt='Bild 2' style='width: 70px'>" 
+                            + "</div>"
+                            + "<div class='content-left-second'>"
+                                + "<div class='left-content-row-one'>" + match[i][0] + "</div>"
+                                + "<div class='left-second-row-two'>" + match[i][2] + "</div>"
+                                + "<div class='left-second-row-three'>" + match[i][3] + "/" + match[i][4] + "/" + match[i][5] + "</div>"
+                            + "</div>"
+                            + "<div class='content-left-third'>"
+                                + "<div class='third-row'>" + "minions: " + match[i][6] + "</div>"
+                                + "<div class='third-row'>" + "damage: " + match[i][7] + "</div>"
+                                + "<div class='third-row'>" + "gold: " + match[i][8] + "</div>"
+                                + "<div class='third-row'>" + "wards placed: " + match[i][9] + "</div>"
+                            + "</div>"
+                        + "</div>";
+
+                    column1Content += rowContent;
+                }
+                else {
+                    var rowContent = ""
+                        + "<div class='content-right' style='width=100%'>"
+                            + "<div class='content-right-third'>"
+                                + "<div class='third-row'>" + "minions: " + match[i][6] + "</div>"
+                                + "<div class='third-row'>" + "damage: " + match[i][7] + "</div>"
+                                + "<div class='third-row'>" + "gold: " + match[i][8] + "</div>"
+                                + "<div class='third-row'>" + "wards placed: " + match[i][9] + "</div>"
+                            + "</div>"
+                            + "<div class='content-right-second'>"
+                                + "<div class='right-content-row-one'>" + match[i][0] + "</div>"
+                                + "<div class='right-second-row-two'>" + match[i][2] + "</div>"
+                                + "<div class='right-second-row-three'>" + match[i][3] + "/" + match[i][4] + "/" + match[i][5] + "</div>"
+                            + "</div>"
+                            + "<div class='content-right-first'>" 
+                                + "<img src='static/champions/" + match[i][2] + ".png' alt='Bild 2' style='width: 70px'>" 
+                            + "</div>"                           
+                        + "</div>";
+
+                    column2Content += rowContent;
+                }
+            }
+            column1Content += "</table>";
+            column2Content += "</table>";
+            $("#column1").html(column1Content);
+            $("#column2").html(column2Content);
+
+
+        }
+
+        function openPopup() {
+            $(".popup").show();
+        }
+
+        function closePopup() {
+            $(".popup").hide();
+        }
+    </script>
+
+</body>
+
+</html>
