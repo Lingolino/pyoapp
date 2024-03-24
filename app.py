@@ -3,7 +3,29 @@ from datetime import datetime
 from urllib.parse import urlencode
 import requests
 
+class apiGateway():
+    def __init__(self):
+        
+        self.api_key = "RGAPI-f17f540a-cba3-4053-b9d2-80d220c6d429"
+        self.region="europe"
+        self.regionCode="euw1"
 
+    def get_match_details(self, match_id):            
+        params = {
+            'api_key': self.api_key,
+            }
+        api_url = f"https://{self.region}.api.riotgames.com/lol/match/v5/matches/{match_id}"
+
+        try:
+            response = requests.get(api_url, params=urlencode(params))
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f'Issue getting match details from match id from API: {e}')
+            return None
+
+
+    
 
 player_names=["DoubIe Ling", "Volbeat1","Pfaffy","Faho541","pYo Titanic","Jermain96","Osko1","Oriannna Grande","Widefight","Kha Chicks"]
 players_puuid=["S6FwiDgvHnvmjwwMkd0QwyJFL0j5A3MDYkyQdkj4RYKz8BRaaGucrT_CBq50b2Uo-xJEGdr2-TMjgw",
