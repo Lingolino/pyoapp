@@ -10,6 +10,27 @@ class apiGateway():
         self.region="europe"
         self.regionCode="euw1"
 
+
+
+
+        username = "doadmin"
+        password = "AVNS_mKI9xsPKtGWOwXg5zyC"
+        host = "leaguedb-do-user-16020222-0.c.db.ondigitalocean.com"
+        port = 25060
+        database = "defaultdb"
+       
+
+            
+        # SSL-Konfiguration für die Verbindung
+        ssl_args = {'ssl': {'ca': 'ca-certificate.crt'}}
+
+        # Verbindung zur Datenbank herstellen mit SSL-Konfiguration
+        self.engine = create_engine(f'mysql://{username}:{password}@{host}:{port}/{database}', connect_args=ssl_args)
+        #self.engine = create_engine(f'mysql://doadmin:AVNS_mKI9xsPKtGWOwXg5zyC@leaguedb-do-user-16020222-0.c.db.ondigitalocean.com:25060/defaultdb?ssl-mode=REQUIRED')
+        #self.engine = create_engine('sqlite:///league.db')
+        Session = sessionmaker(bind=self.engine)
+        self.session = Session()
+
     def get_match_details(self, match_id):            
         params = {
             'api_key': self.api_key,
