@@ -2,6 +2,9 @@ from flask import Flask, render_template,request,jsonify
 from datetime import datetime
 from urllib.parse import urlencode
 import requests
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
+from sqlalchemy.orm import relationship, sessionmaker, declarative_base 
 
 class apiGateway():
     def __init__(self):
