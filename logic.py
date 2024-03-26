@@ -101,7 +101,7 @@ class DatabaseManager:
             print("matches wurde erstellt")
             match_db.__table__.create(self.engine)
 		
-    def delete_table():
+    def delete_table(self):
     	match_table  =match_db.__table__
     	players_table = player_db.__table__
     	players_table.drop(self.engine)
