@@ -20,6 +20,22 @@ players_puuid=["S6FwiDgvHnvmjwwMkd0QwyJFL0j5A3MDYkyQdkj4RYKz8BRaaGucrT_CBq50b2Uo
                 ]
 
 
+def update_infos():
+    start_time=1704859587
+    queue_code=420
+    match_type="ranked"
+    count=70
+    start=0
+    max_requests_per_minute = 50
+    requests_count = 0
+
+    for index,puuid in enumerate(players_puuid):      
+        logics = Controller(puuid,max_requests_per_minute,requests_count)
+        # logics.add_player()
+        logics.update_player()
+        requests_count =logics.add_games(start_time,queue_code,match_type,count,start)
+
+
 def get_infos():
     start_time=1704859587
     queue_code=420
@@ -35,14 +51,12 @@ def get_infos():
     players_rank_stats = []
     players_most_played_champ_stats = []
     all_games = []
-    dbManager = DatabaseManager()
-    dbManager.delete_table()
-
+    
     for index,puuid in enumerate(players_puuid):      
         logics = Controller(puuid,max_requests_per_minute,requests_count)
-        logics.add_player()
-        logics.update_player()
-        requests_count =logics.add_games(start_time,queue_code,match_type,count,start)
+        #logics.add_player()
+        #logics.update_player()
+        #requests_count =logics.add_games(start_time,queue_code,match_type,count,start)
 
 
         game_count, winrate, win_count = logics.get_winrate()
@@ -76,8 +90,12 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET','POST'])
 def start_page():
+    VarTest = 0
     if request.method== 'POST':
-        None
+        VarTestMili =  datetime.now()
+        VarTest = VarTestMili.replace(microsecond=0)
+        print("POST")
+        update_infos()
 
     SpielerUnsortiert = player_names 
     played_games_by_player, winrates, players_champ_stats, players_rank_stats = get_infos() 
@@ -124,7 +142,7 @@ def start_page():
     
     
 
-    return render_template('index.html',WinrateDict= WinrateDict, RecordKills=Record_Kills, 
+    return render_template('index.html',VarTest = VarTest,WinrateDict= WinrateDict, RecordKills=Record_Kills, 
                            RecordDeaths= Record_Deaths, RecordMinions=Record_Minions, RecordAssists = Record_Assists, 
                            SpielerRang = players_rank_stats, mostPlayedChampion = players_champ_stats, SpielerWinrate = winrates, 
                            Games =Games, SpielerAnzahl = SpielerAnzahl,SpielerProzent =SpielerProzent,
