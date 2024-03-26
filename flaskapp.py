@@ -11,7 +11,7 @@ import mysql.connector
 class apiGateway():
     def __init__(self):
         
-        self.api_key = "RGAPI-f17f540a-cba3-4053-b9d2-80d220c6d429"
+        self.api_key = "RGAPI-eb379414-0ce3-44a9-83c2-5c7122f50788"
         self.region="europe"
         self.regionCode="euw1"
 
