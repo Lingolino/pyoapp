@@ -28,13 +28,13 @@ class player_db(Base):
     __tablename__ = 'players'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String, unique=False)
-    puuid = Column(String, unique=True)
-    player_id = Column(String, unique=True)
+    name = Column(String(30), unique=False)
+    puuid = Column(String(30), unique=True)
+    player_id = Column(String(30), unique=True)
     lvl = Column(Integer)
     icon = Column(Integer)
-    solo_tier = Column(String)
-    solo_rank = Column(String)
+    solo_tier = Column(String(30))
+    solo_rank = Column(String(30))
     solo_points = Column(Integer)
     matches = relationship('match_db', back_populates='player')
 
@@ -45,15 +45,15 @@ class match_db(Base):
 
     id = Column(Integer, primary_key=True)
     player_puuid = Column(Integer, ForeignKey('players.puuid'))
-    match_id = Column(String)
-    champion_name = Column(String)
+    match_id = Column(String(30))
+    champion_name = Column(String(30))
     champion_lvl = Column(Integer)   #raus
     kills = Column(Integer)
     deaths = Column(Integer)
     assists = Column(Integer)
     minions = Column(Integer)
-    outcome = Column(String)
-    date = Column(String)
+    outcome = Column(String(30))
+    date = Column(String(30))
     player = relationship('player_db', back_populates='matches')
 
 class apiGateway():
