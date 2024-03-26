@@ -312,7 +312,7 @@ class DatabaseManager:
 class apiGateway():
     def __init__(self):
         
-        self.api_key = "RGAPI-eb379414-0ce3-44a9-83c2-5c7122f50788"
+        self.api_key = "RGAPI-8e602731-9d0a-4e78-9b77-db5262c39d94"
         self.region="europe"
         self.regionCode="euw1"
 
