@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship, sessionmaker, declarative_base
 import MySQLdb
 import mysql.connector
 import logic
-from logic import Controller, apiGateway
+from logic import Controller, apiGateway, DatabaseManager
 
 
 player_names=["DoubIe Ling", "Volbeat1","Pfaffy","Faho541","pYo Titanic","Jermain96","Osko1","Oriannna Grande","Widefight","Kha Chicks"]
@@ -41,6 +41,8 @@ def get_infos():
     players_rank_stats = []
     players_most_played_champ_stats = []
     all_games = []
+    dbManager = DatabaseManager()
+    dbManager.delete_table()
 
     for index,puuid in enumerate(players_puuid):      
         logics = Controller(puuid,max_requests_per_minute,requests_count)
