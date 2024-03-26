@@ -105,8 +105,7 @@ class DatabaseManager:
     	match_table  =match_db.__table__
     	players_table = player_db.__table__
 	match_table.drop(self.engine)
-    	players_table.drop(self.engine)
-    	
+	players_table.drop(self.engine)
 
     
 
