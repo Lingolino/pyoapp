@@ -5,6 +5,8 @@ import requests
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship, sessionmaker, declarative_base 
+import MySQLdb
+import mysql.connector
 
 class apiGateway():
     def __init__(self):
