@@ -54,9 +54,9 @@ def get_infos():
     
     for index,puuid in enumerate(players_puuid):      
         logics = Controller(puuid,max_requests_per_minute,requests_count)
-        #logics.add_player()
-        #logics.update_player()
-        #requests_count =logics.add_games(start_time,queue_code,match_type,count,start)
+        logics.add_player()
+        logics.update_player()
+        requests_count =logics.add_games(start_time,queue_code,match_type,count,start)
 
 
         game_count, winrate, win_count = logics.get_winrate()
