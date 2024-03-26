@@ -23,9 +23,22 @@
 </head>
 
 <body>
-
-
+    <div class="pyogranny">
+        
+        <img src="/static/Granny-01.png" alt="ne">
+    </div>
     <h1>Die große pYo Winrate Challenge</h1>
+    <h2>Wer schafft es nach 70 gespielten Spielen die höchste Winratezu erreichen!</h2>
+    <h3> Diese Website stellt Statistiken und Fortschritte der einzelnen Spieler dar.</h3>
+
+    <form method="POST" action="" style="text-align: center;">
+        <button type="submit">Daten aktualisieren</button>
+    </form>
+    <h3>Das Aktualisierren der Daten dauert 3 min, letzte Aktualisierung:</h3>
+    <h3>{{VarTest}}</h3>
+
+
+    
 
     <div class="container">
         <h2>Anzahl der gespielten Games</h2>
@@ -162,7 +175,7 @@
 
     <div class="container">
         <h2>Winrates der einzelnen Spieler</h2>
-    <div style="width:100%;">
+    <div style="width:120%; text-align: center;">
         <canvas id="line-chart"></canvas>
     </div>
     <script>

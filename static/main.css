@@ -5,12 +5,29 @@ body {
 
 }
 
+
+
+.pyogranny {
+    text-align: center;
+   
+    height: 900px;
+    position: static;
+    /* border: solid 1px #ccc; */
+    color: white;
+
+
+}
+.pyogranny img {
+    width: 40%;
+    position: static;
+}
 .container {
+    position: static;
+    margin-top: 20px;
     margin: auto;
+    
     /* Zentrieren des Inhalts vertikal */
 }
-
-
 h1 {
     text-align: center;
     color: white;
@@ -44,6 +61,8 @@ h1 {
 }
 
 .grid-fortschritt {
+    position: static;
+    text-align: center;
     display: grid;
     grid-template-columns: 300px auto;
     color: bisque;
@@ -100,7 +119,7 @@ h2 {
     align-items: flex-end;
     /* Blöcke unten ausrichten */
     margin-top: 150px;
-    position: relative;
+    position: static;
     /* Container für die absolute Positionierung der Bilder */
 }
 
@@ -166,17 +185,19 @@ h2 {
 
 
 .radio_container {
-    position: absolute;
+    position: static;
+    text-align: center;
     display: none;
-    justify-content: center; /* horizontal mittig ausrichten */
-    margin-left: auto; /* linker Seitenabstand automatisch berechnen */
-    margin-right: auto; 
+    /* justify-content: center;
+    margin-left: auto; 
+    margin-right: auto;  */
 }
 
 .tabs {
     display: flex;
-    position: absolute;
+    position: static;
     margin: auto;
+    width: 2000px;
     background-color:  rgb(20, 9, 90);
     box-shadow: rgb(0, 0, 0, 0.2)0px 60px 40px -7px;
     padding: 0.75rem;
@@ -190,9 +211,11 @@ h2 {
 
 input[type="radio"] {
     display: None;
+    position: static;
 }
 
 .tab {
+    position: static;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -228,38 +251,38 @@ input[id="radio-1"]:checked~.glider {
 }
 
 input[id="radio-2"]:checked~.glider {
-    transform: translateX(100%);
+    transform: translateX(98%);
 }
 
 input[id="radio-3"]:checked~.glider {
-    transform: translateX(200%);
+    transform: translateX(196%);
 }
 
 input[id="radio-4"]:checked~.glider {
-    transform: translateX(300%);
+    transform: translateX(294%);
 }
 
 input[id="radio-5"]:checked~.glider {
-    transform: translateX(400%);
+    transform: translateX(392%);
 }
 
 input[id="radio-6"]:checked~.glider {
-    transform: translateX(500%);
+    transform: translateX(490%);
 }
 
 input[id="radio-7"]:checked~.glider {
-    transform: translateX(600%);
+    transform: translateX(588%);
 }
 input[id="radio-8"]:checked~.glider {
-    transform: translateX(700%);
+    transform: translateX(686%);
 }
 
 input[id="radio-9"]:checked~.glider {
-    transform: translateX(800%);
+    transform: translateX(784%);
 }
 
 input[id="radio-10"]:checked~.glider {
-    transform: translateX(900%);
+    transform: translateX(882%);
 }
 
 
@@ -338,8 +361,9 @@ input[id="radio-10"]:checked~.glider {
 
 
 .stat-container {
-    margin: auto;
-    position: center;
+    position: static;
+    margin-top: 60px;
+    
     display: grid;
     grid-template-columns: 330px 500px 500px;
     gap: 10px;

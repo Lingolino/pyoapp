@@ -100,12 +100,13 @@ class DatabaseManager:
         if 'matches' not in inspector.get_table_names():
             print("matches wurde erstellt")
             match_db.__table__.create(self.engine)
-		
-	def delete_table(self):
-	    match_table  =match_db.__table__
-	    players_table = player_db.__table__
-	    match_table.drop(self.engine)
-	    players_table.drop(self.engine)
+
+
+    def delete_tabel(self):
+        match_table=match_db.__table__
+        players_table=player_db.__table__
+        match_table.drop(self.engine)
+        players_table.drop(self.engine)
 	    
 
     

@@ -1,13 +1,7 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Text, inspect
 from flask import Flask, render_template,request,jsonify
 from datetime import datetime
 from urllib.parse import urlencode
 import requests
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
-from sqlalchemy.orm import relationship, sessionmaker, declarative_base 
-import MySQLdb
-import mysql.connector
 import logic
 from logic import Controller, apiGateway, DatabaseManager
 
