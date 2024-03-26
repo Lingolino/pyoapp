@@ -1,3 +1,4 @@
+from sqlalchemy import Column, Integer, String, ForeignKey, Text, inspect
 from flask import Flask, render_template,request,jsonify
 from datetime import datetime
 from urllib.parse import urlencode
