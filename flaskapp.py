@@ -8,6 +8,53 @@ from sqlalchemy.orm import relationship, sessionmaker, declarative_base
 import MySQLdb
 import mysql.connector
 
+player_names=["DoubIe Ling", "Volbeat1","Pfaffy","Faho541","pYo Titanic","Jermain96","Osko1","Oriannna Grande","Widefight","Kha Chicks"]
+players_puuid=["S6FwiDgvHnvmjwwMkd0QwyJFL0j5A3MDYkyQdkj4RYKz8BRaaGucrT_CBq50b2Uo-xJEGdr2-TMjgw",
+                "SKtbgaxUE3suMqvkqrzIzZKPar10W-95V3GNg-QdLdaZoett6o92hsUNh1ezbSicCJBtAqKk1Q__dQ",
+                "dV7G-KIhrspygrvtfODC5Q8_hv93cPX7VFOS49VoYiD_XevUzayTAtWbhwhZOUqnsV0WCObL_lUkiA",
+                "IlugQODSN_0EA7AhI2rw9ZAHy55hSAVtZ3vVQaIaRe2Fid2YPU7_2ZkFnlWi61ALeW8nnZ0nDSz6AQ",
+                "7vPMrpX6K1LDy1AVC-B0Zm1WLvS5NQNHTLMUV6NwAq0n3B-srEcXCJlpstWK_ZSkmz5lDWfxXIxR4g",
+                "NQdNibFbQFvK8XfQerYVEzO4SAPKVw6TVZAxLB_HMI4MNpVoHb9TgT4Xr9colsW7lWjcBaERYwjJbA",
+                "Oh9OX3P_cJnXlolhhB4-LcUVTW9O9Bko9d1k58flnrWgpPqGWh-0_Dl1ccwMUZnMO5gMy2PYbXNpfQ",
+                "V2M06G2ogO1CzolVGyNYJK8GVa2QIdz_Tahp5fXiiOuB2YCFguCLjywFDiMhX2P0HQ2-PCWHIAK8Jw",
+                "EwKrLLx3OSW5TV0ciJU2-kOpjWZpHVuqeUCgoNUsGUI20rM9uga_GQzx5PyXpXMg82jjM4LTFgdFjg",
+                "b0lEQQV-Nz6ORhdIPXkg-K4787kYlODOn2hYuvgmIcaj9ISA3ghDW8j0bpOQF578-w1giOjzkPgNYg"
+                ]
+
+Base = declarative_base()
+
+class player_db(Base):
+    __tablename__ = 'players'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=False)
+    puuid = Column(String, unique=True)
+    player_id = Column(String, unique=True)
+    lvl = Column(Integer)
+    icon = Column(Integer)
+    solo_tier = Column(String)
+    solo_rank = Column(String)
+    solo_points = Column(Integer)
+    matches = relationship('match_db', back_populates='player')
+
+
+
+class match_db(Base):
+    __tablename__ = 'matches'
+
+    id = Column(Integer, primary_key=True)
+    player_puuid = Column(Integer, ForeignKey('players.puuid'))
+    match_id = Column(String)
+    champion_name = Column(String)
+    champion_lvl = Column(Integer)   #raus
+    kills = Column(Integer)
+    deaths = Column(Integer)
+    assists = Column(Integer)
+    minions = Column(Integer)
+    outcome = Column(String)
+    date = Column(String)
+    player = relationship('player_db', back_populates='matches')
+
 class apiGateway():
     def __init__(self):
         
@@ -35,6 +82,17 @@ class apiGateway():
         #self.engine = create_engine('sqlite:///league.db')
         Session = sessionmaker(bind=self.engine)
         self.session = Session()
+
+
+
+        inspector = inspect(self.engine)
+        if 'players' not in inspector.get_table_names():
+            print("players wurder erstellt")
+            player_db.__table__.create(self.engine)
+            
+        if 'matches' not in inspector.get_table_names():
+            print("matches wurde erstellt")
+            match_db.__table__.create(self.engine)
 
     def get_match_details(self, match_id):            
         params = {
