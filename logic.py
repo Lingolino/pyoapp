@@ -102,7 +102,7 @@ class DatabaseManager:
             match_db.__table__.create(self.engine)
 
 
-    def delete_tabel(self):
+    def delete_table(self):
         match_table=match_db.__table__
         players_table=player_db.__table__
         match_table.drop(self.engine)
