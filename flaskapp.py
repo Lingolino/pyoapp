@@ -6,12 +6,14 @@ import logic
 from logic import Controller, apiGateway, DatabaseManager
 
 
-player_names=["DoubIe Ling", "Volbeat1","Pfaffy","Faho541","pYo Titanic","Jermain96","Osko1","Oriannna Grande","Widefight","Kha Chicks"]
-players_puuid=["S6FwiDgvHnvmjwwMkd0QwyJFL0j5A3MDYkyQdkj4RYKz8BRaaGucrT_CBq50b2Uo-xJEGdr2-TMjgw",
-                "SKtbgaxUE3suMqvkqrzIzZKPar10W-95V3GNg-QdLdaZoett6o92hsUNh1ezbSicCJBtAqKk1Q__dQ",
-                "dV7G-KIhrspygrvtfODC5Q8_hv93cPX7VFOS49VoYiD_XevUzayTAtWbhwhZOUqnsV0WCObL_lUkiA",
-                "IlugQODSN_0EA7AhI2rw9ZAHy55hSAVtZ3vVQaIaRe2Fid2YPU7_2ZkFnlWi61ALeW8nnZ0nDSz6AQ",
-                "7vPMrpX6K1LDy1AVC-B0Zm1WLvS5NQNHTLMUV6NwAq0n3B-srEcXCJlpstWK_ZSkmz5lDWfxXIxR4g",
+player_names=[#"DoubIe Ling", "Volbeat1","Pfaffy","Faho541","pYo Titanic",
+              "Jermain96","Osko1","Oriannna Grande","Widefight","Kha Chicks"]
+players_puuid=[
+                #"S6FwiDgvHnvmjwwMkd0QwyJFL0j5A3MDYkyQdkj4RYKz8BRaaGucrT_CBq50b2Uo-xJEGdr2-TMjgw",
+                #"SKtbgaxUE3suMqvkqrzIzZKPar10W-95V3GNg-QdLdaZoett6o92hsUNh1ezbSicCJBtAqKk1Q__dQ",
+                #"dV7G-KIhrspygrvtfODC5Q8_hv93cPX7VFOS49VoYiD_XevUzayTAtWbhwhZOUqnsV0WCObL_lUkiA",
+                #"IlugQODSN_0EA7AhI2rw9ZAHy55hSAVtZ3vVQaIaRe2Fid2YPU7_2ZkFnlWi61ALeW8nnZ0nDSz6AQ",
+                #"7vPMrpX6K1LDy1AVC-B0Zm1WLvS5NQNHTLMUV6NwAq0n3B-srEcXCJlpstWK_ZSkmz5lDWfxXIxR4g",
                 "NQdNibFbQFvK8XfQerYVEzO4SAPKVw6TVZAxLB_HMI4MNpVoHb9TgT4Xr9colsW7lWjcBaERYwjJbA",
                 "Oh9OX3P_cJnXlolhhB4-LcUVTW9O9Bko9d1k58flnrWgpPqGWh-0_Dl1ccwMUZnMO5gMy2PYbXNpfQ",
                 "V2M06G2ogO1CzolVGyNYJK8GVa2QIdz_Tahp5fXiiOuB2YCFguCLjywFDiMhX2P0HQ2-PCWHIAK8Jw",
