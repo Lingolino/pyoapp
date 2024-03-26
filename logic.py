@@ -44,7 +44,7 @@ class player_db(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(30), unique=False)
-    puuid = Column(String(70), unique=True)
+    puuid = Column(String(80), unique=True)
     player_id = Column(String(70), unique=True)
     lvl = Column(Integer)
     icon = Column(Integer)
@@ -59,7 +59,7 @@ class match_db(Base):
     __tablename__ = 'matches'
 
     id = Column(Integer, primary_key=True)
-    player_puuid = Column(String(70), ForeignKey('players.puuid'))
+    player_puuid = Column(String(80), ForeignKey('players.puuid'))
     match_id = Column(String(30))
     champion_name = Column(String(30))
     champion_lvl = Column(Integer)   #raus
