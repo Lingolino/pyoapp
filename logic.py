@@ -752,18 +752,4 @@ def delete_table():
 
 
 
-def update_infos():
-    start_time=1704859587
-    queue_code=420
-    match_type="ranked"
-    count=70
-    start=0
-    max_requests_per_minute = 50
-    requests_count = 0
-
-    for index,puuid in enumerate(players_puuid):      
-        Controller(puuid,max_requests_per_minute,requests_count)
-        Controller.add_player()
-
-update_infos()
         
